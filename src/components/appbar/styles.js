@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 const AppBarStyles   = styled.nav`
+    position:relative;
     box-shadow:  0 0 2px 1px grey;
-    padding: 0.5rem 1rem;     
+    padding: 1rem;
+    background-color: transparent;     
 `;
 
 const AppBarItems = styled.ul`
@@ -13,6 +15,14 @@ const AppBarItems = styled.ul`
 
 const AppBarItem = styled.li`
     
-`
 
-export {AppBarStyles, AppBarItem, AppBarItems}
+`;
+const AppBarGroupItem = styled.li`
+    display:flex;
+    gap:0.25rem;
+
+`;
+
+
+
+export {AppBarStyles, AppBarItem, AppBarGroupItem, AppBarItems}

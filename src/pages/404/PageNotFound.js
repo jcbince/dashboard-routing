@@ -1,21 +1,32 @@
- import React from 'react'
+import React, {useState} from 'react';
+
+ import { onAuthStateChanged } from 'firebase/auth';
+ import { auth } from 'libs/firebase';
+
  import {Link} from "react-router-dom"
+
+
+
  function PageNotFound  (props){
-     return( 
+    const [isUser, setIsUser] = useState(false);
+    
+    onAuthStateChanged(auth, (user)=>{
+        if (user){
+            setIsUser(true)
+        } else {
+            setIsUser(false)
+        }
+    })
+    return( 
          <>
-          <nav>
-            <ul>
-                <li>
-                    <Link to="/">LoginPage</Link>
-                </li>
-                <li>
-                    <Link to="/dashboard">DashBoard Page</Link>
-                </li>
-            </ul>
-        </nav>
-         <header>
-             <h1>Page Not Found</h1>
-         </header>
+          <aside>
+            <header>
+                <h1>Page Not Found | 404 | NOT HERE</h1>
+                {
+                    isUser? <Link to='/dashboard'>Back to Safety</Link> :  <Link to='/'>Logout</Link>
+                }
+            </header>
+          </aside>
          
          </>
      )
